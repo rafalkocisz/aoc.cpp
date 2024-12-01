@@ -50,13 +50,13 @@ tuple<Side, size_t> parseInstruction(const string& instruction)
 	{
 		constexpr size_t expectedInstructionMatchSize = 3;
 
-		AOC_ASSERT(instructionMatch.size() == expectedInstructionMatchSize);
+		AOC_ENFORCE(instructionMatch.size() == expectedInstructionMatchSize);
 
 		const string& sideTag = instructionMatch[1].str();
 		const size_t numBlocks = stoi(instructionMatch[2].str());
 
-		AOC_ASSERT(sideTag.size() == 1);
-		AOC_ASSERT(sideTag[0] == 'L' || sideTag[0] == 'R');
+		AOC_ENFORCE(sideTag.size() == 1);
+		AOC_ENFORCE(sideTag[0] == 'L' || sideTag[0] == 'R');
 
 		switch(sideTag[0])
 		{

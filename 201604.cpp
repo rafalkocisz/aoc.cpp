@@ -124,7 +124,7 @@ RoomListEntry parseRoomListEntry(const string& line)
 	{
 		constexpr size_t expectedRoomListEntryMatchSize = 4;
 
-		AOC_ASSERT(roomListEntryMatch.size() == expectedRoomListEntryMatchSize);
+		AOC_ENFORCE(roomListEntryMatch.size() == expectedRoomListEntryMatchSize);
 
 		return RoomListEntry(roomListEntryMatch[1],
 		                     stoi(roomListEntryMatch[2]),
