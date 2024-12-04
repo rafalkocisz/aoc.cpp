@@ -85,7 +85,7 @@ private:
 			if((*memory_)[current_ + 1] == 'u' &&
 			   (*memory_)[current_ + 2] == 'l')
 			{
-				current_ += 3;
+				current_ += mulInstructionLength;
 
 				return true;
 			}
