@@ -7,9 +7,11 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cmath>
+#include <regex>
 #include <set>
 #include <source_location>
 #include <string>
+#include <tuple>
 #include <vector>
 
 #define AOC_FUNCTIONIZE(_a, _b) \
