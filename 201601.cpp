@@ -5,15 +5,6 @@
 #include "doctest/doctest.h"
 #endif
 
-#define FMT_HEADER_ONLY
-#include "fmt/format.h"
-
-#include <regex>
-#include <set>
-#include <string>
-#include <tuple>
-#include <vector>
-
 #define CHECK_SANTA(_x, _y, _direction) \
 	CHECK(santa.x() == _x); \
 	CHECK(santa.y() == _y); \
@@ -23,20 +14,6 @@
 using namespace fmt;
 using namespace aoc;
 using namespace std;
-
-enum class Direction
-{
-	North = 0,
-	East,
-	South,
-	West,
-};
-
-enum class Side
-{
-	Left,
-	Right,
-};
 
 tuple<Side, size_t> parseInstruction(const string& instruction)
 {
@@ -69,30 +46,6 @@ tuple<Side, size_t> parseInstruction(const string& instruction)
 
 	return make_tuple(Side::Left, 0);
 }
-
-constexpr tuple<int, int> deltaPositionFor[] =
-{
-	{  0, -1 }, // Direction::North
-	{  1,  0 }, // Direction::East
-	{  0,  1 }, // Direction::South
-	{ -1,  0 }, // Direction::West
-};
-
-constexpr Direction lhsDirectionFor[] =
-{
-	Direction::West , // Direction::North
-	Direction::North, // Direction::East
-	Direction::East , // Direction::South
-	Direction::South, // Direction::West
-};
-
-constexpr Direction rhsDirectionFor[] =
-{
-	Direction::East , // Direction::North
-	Direction::South, // Direction::East
-	Direction::West , // Direction::South
-	Direction::North, // Direction::West
-};
 
 class Santa
 {
@@ -176,7 +129,7 @@ public:
 
 	void followInstructions(const string& instructionsStr)
 	{
-		const std::vector<std::string> instructions = StringUtils::tokenize(instructionsStr);
+		const auto instructions = StringUtils::tokenize(instructionsStr);
 
 		for(const auto& instruction : instructions)
 			followInstruction(instruction);
@@ -187,7 +140,7 @@ public:
 		positions_.clear();
 		positions_.insert(position());
 
-		const std::vector<std::string> instructions = StringUtils::tokenize(instructionsStr);
+		const auto instructions = StringUtils::tokenize(instructionsStr);
 
 		for(const auto& instruction : instructions)
 			if(followInstructionUntilTheFirstLocationYouVisitTwiceIsFound(instruction))
