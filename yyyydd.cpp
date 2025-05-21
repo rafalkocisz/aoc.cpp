@@ -5,9 +5,6 @@
 #include "doctest/doctest.h"
 #endif
 
-#define FMT_HEADER_ONLY
-#include "fmt/format.h"
-
 using namespace fmt;
 using namespace aoc;
 using namespace std;
