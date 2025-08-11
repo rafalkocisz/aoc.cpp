@@ -626,7 +626,7 @@ TEST_CASE("EngineSchematic")
 class GearRatios : public PuzzleSolution<int>
 {
 private:
-	void processInput(const std::string& puzzleInputFilePath) override;
+	void processInput(const string& puzzleInputFilePath) override;
 	int answer1() override;
 	int answer2() override;
 
@@ -634,7 +634,7 @@ private:
 	EngineSchematic engineSchematic_;
 };
 
-void GearRatios::processInput(const std::string& puzzleInputFilePath)
+void GearRatios::processInput(const string& puzzleInputFilePath)
 {
 	PuzzleSolution::processInput(puzzleInputFilePath);
 
