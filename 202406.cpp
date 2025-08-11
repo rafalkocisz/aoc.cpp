@@ -57,15 +57,15 @@ public:
 	const BoundedGrid2D<char>& map() const { return map_; }
 
 public:
-	Point2s findGuardStartPosition() const;
+	Point2uz findGuardStartPosition() const;
 
 private:
 	BoundedGrid2D<char> map_;
 };
 
-Point2s Lab::findGuardStartPosition() const
+Point2uz Lab::findGuardStartPosition() const
 {
-	Point2s guardStartPosition;
+	Point2uz guardStartPosition;
 
 	for(char directionChar : directionChars)
 	{
@@ -217,7 +217,7 @@ TEST_CASE("Lab")
 
 	SUBCASE("findGuardStartPosition")
 	{
-		CHECK(lab.findGuardStartPosition() == Point2s(4, 6));
+		CHECK(lab.findGuardStartPosition() == Point2uz(4, 6));
 	}
 }
 
@@ -240,8 +240,8 @@ TEST_CASE("Guard")
 	Lab lab(lines);
 	Guard guard(lab);
 
-	CHECK(guard.startPosition_ == Point2s(4, 6));
-	CHECK(guard.currentPosition_ == Point2s(4, 6));
+	CHECK(guard.startPosition_ == Point2uz(4, 6));
+	CHECK(guard.currentPosition_ == Point2uz(4, 6));
 	CHECK(guard.direction_ == Direction::North);
 
 	SUBCASE("predictPath")

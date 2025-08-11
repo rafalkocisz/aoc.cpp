@@ -419,7 +419,7 @@ TEST_CASE("BoundedGrid2D<char>")
 
 		aoc::BoundedGrid2D<char> grid(lines);
 
-		CHECK(grid.findCell('^') == aoc::Point2s(4, 6));
+		CHECK(grid.findCell('^') == aoc::Point2uz(4, 6));
 	}
 
 	SUBCASE("toString")

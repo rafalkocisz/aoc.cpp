@@ -162,7 +162,7 @@ using Vec2i = Vec2<int>;
 using Vec2s = Vec2<size_t>;
 
 using Point2i = Vec2<int>;
-using Point2s = Vec2<size_t>;
+using Point2uz = Vec2<size_t>;
 
 template<class T>
 struct Vec2
@@ -657,15 +657,15 @@ public:
 			: grid_(grid)
 			, count_(0)
 		{
-			if(y > 0              ) positions_[count_++] = Point2s(x  , y-1);
-			if(x > 0              ) positions_[count_++] = Point2s(x-1, y  );
-			if(x < grid.width()-1 ) positions_[count_++] = Point2s(x+1, y  );
-			if(y < grid.height()-1) positions_[count_++] = Point2s(x  , y+1);
+			if(y > 0              ) positions_[count_++] = Point2uz(x  , y-1);
+			if(x > 0              ) positions_[count_++] = Point2uz(x-1, y  );
+			if(x < grid.width()-1 ) positions_[count_++] = Point2uz(x+1, y  );
+			if(y < grid.height()-1) positions_[count_++] = Point2uz(x  , y+1);
 		}
 
 	private:
 		BoundedGrid2D& grid_;
-		Point2s positions_[maxCount];
+		Point2uz positions_[maxCount];
 		size_t count_;
 	};
 
@@ -694,15 +694,15 @@ public:
 			: grid_(grid)
 			, count_(0)
 		{
-			if(y > 0              ) positions_[count_++] = Point2s(x  , y-1);
-			if(x > 0              ) positions_[count_++] = Point2s(x-1, y  );
-			if(x < grid.width()-1 ) positions_[count_++] = Point2s(x+1, y  );
-			if(y < grid.height()-1) positions_[count_++] = Point2s(x  , y+1);
+			if(y > 0              ) positions_[count_++] = Point2uz(x  , y-1);
+			if(x > 0              ) positions_[count_++] = Point2uz(x-1, y  );
+			if(x < grid.width()-1 ) positions_[count_++] = Point2uz(x+1, y  );
+			if(y < grid.height()-1) positions_[count_++] = Point2uz(x  , y+1);
 		}
 
 	private:
 		const BoundedGrid2D& grid_;
-		Point2s positions_[maxCount];
+		Point2uz positions_[maxCount];
 		size_t count_;
 	};
 
@@ -762,14 +762,14 @@ public:
 		return cells_[y][x];
 	}
 
-	T& cell(const Point2s& pos)
+	T& cell(const Point2uz& pos)
 	{
 		AOC_ASSERT(pos.x_ < width() && pos.y_ < height());
 
 		return cells_[pos.y_][pos.x_];
 	}
 
-	const T& cell(const Point2s& pos) const
+	const T& cell(const Point2uz& pos) const
 	{
 		AOC_ASSERT(pos.x_ < width() && pos.y_ < height());
 
@@ -799,7 +799,7 @@ public:
 		cells_[y][x] = cell;
 	}
 
-	void setCell(const Point2s& pos, const T& cell)
+	void setCell(const Point2uz& pos, const T& cell)
 	{
 		AOC_ASSERT(pos.x_ < width() && pos.y_ < height());
 
@@ -891,7 +891,7 @@ public:
 		return counter;
 	}
 
-	Point2s findCell(const T& cell) const
+	Point2uz findCell(const T& cell) const
 	{
 		const size_t w = width();
 		const size_t h = height();
@@ -899,9 +899,9 @@ public:
 		for(size_t y=0; y<h; ++y)
 			for(size_t x=0; x<w; ++x)
 				if(cells_[y][x] == cell)
-					return Point2s(x, y);
+					return Point2uz(x, y);
 
-		return Point2s(npos, npos);
+		return Point2uz(npos, npos);
 	}
 
 	std::string toString() const
